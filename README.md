@@ -47,11 +47,14 @@ Set true to allow only one confirmation to show at a time. `default: true`
 + **popout**
 Set true to hide the confirmation when user clicks outside of it. `default: true`
 
++ **onHide**
+Callback when popup hide. `default: function(event, element){}`
+
 + **onConfirm**
-Callback for confirm button. `default: function(event){}`
+Callback for confirm button. `default: function(event, element){}`
 
 + **onCancel**
-Callback for cancel button. `default: function(event){}`
+Callback for cancel button. `default: function(event, element){}`
 
 ## Copyright and license
 

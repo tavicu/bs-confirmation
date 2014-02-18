@@ -99,7 +99,7 @@
 			.prepend($('<i></i>').addClass(this.getBtnOkIcon()), " ")
 			.attr('href', this.getHref())
 			.attr('target', this.getTarget())
-			.one('click', function(event) {
+			.off('click').on('click', function(event) {
 				options.onConfirm(event);
 
 				that.$element.confirmation('hide');
@@ -108,7 +108,7 @@
 		$btnCancel.addClass(this.getBtnCancelClass())
 			.html(this.getBtnCancelLabel())
 			.prepend($('<i></i>').addClass(this.getBtnCancelIcon()), " ")
-			.one('click', function(event){
+			.off('click').on('click', function(event){
 				options.onCancel(event);
 
 				that.$element.confirmation('hide');

@@ -1,7 +1,7 @@
 # bootstrap-confirmation v1.0
 
 This is a fork of ethaizone's [original code](https://github.com/ethaizone/Bootstrap-Confirmation)
-With some help from jibe914's [original code](https://github.com/jibe914/Bootstrap-Confirmation)
+and some help from jibe914's [original code](https://github.com/jibe914/Bootstrap-Confirmation)
 
 Confirmation plugin compatible with Twitter Bootstrap 3 extending Popover
 

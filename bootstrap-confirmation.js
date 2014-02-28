@@ -11,17 +11,24 @@
 
 		this.init('confirmation', element, options);
 
-		$(element).on('hide.bs.confirmation', function(e) {
-			that.options.onHide(e, this);
-		});
 
 		$(element).on('show.bs.confirmation', function(e) {
+			that.options.onShow(e, this);
+
+			$(this).addClass('open');
+
 			var options = that.options;
 			var all = options.all_selector;
 
 			if(options.singleton) {
-				$(all).not(that.$element).confirmation('hide');
+				$(all+'.in').not(that.$element).confirmation('hide');
 			}
+		});
+
+		$(element).on('hide.bs.confirmation', function(e) {
+			that.options.onHide(e, this);
+
+			$(this).removeClass('open');
 		});
 
 		$(element).on('shown.bs.confirmation', function(e) {
@@ -48,12 +55,16 @@
 				}
 			}
 		});
+
+		$(element).on('click', function(e) {
+			e.preventDefault();
+		});
 	}
 
 	if (!$.fn.popover || !$.fn.tooltip) throw new Error('Confirmation requires popover.js and tooltip.js');
 
 	Confirmation.DEFAULTS = $.extend({}, $.fn.popover.Constructor.DEFAULTS, {
-		placement 		: 'top',
+		placement 		: 'right',
 		title 			: 'Are you sure?',
 		btnOkClass 		: 'btn btn-sm btn-danger',
 		btnOkLabel 		: 'Delete',
@@ -65,6 +76,7 @@
 		target 			: '_self',
 		singleton 		: true,
 		popout 			: true,
+		onShow 			: function(event, element){},
 		onHide 			: function(event, element){},
 		onConfirm 		: function(event, element){},
 		onCancel 		: function(event, element){},

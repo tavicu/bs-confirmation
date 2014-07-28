@@ -29,6 +29,7 @@
 			that.options.onHide(e, this);
 
 			$(this).removeClass('open');
+			$(this).siblings(".popover").remove();
 		});
 
 		$(element).on('shown.bs.confirmation', function(e) {

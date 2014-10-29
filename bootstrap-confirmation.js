@@ -83,8 +83,8 @@
 		template 		:   '<div class="popover"><div class="arrow"></div>'
 							+ '<h3 class="popover-title"></h3>'
 							+ '<div class="popover-content">'
-							+ '<a data-apply="confirmation">Yes</a>'
-							+ ' <a data-dismiss="confirmation">No</a>'
+							+ '<a data-apply="confirmation" onclick="return false;">Yes</a>'
+							+ ' <a data-dismiss="confirmation" onclick="return false;">No</a>'
 							+ '</div>'
 							+ '</div>'
 	});

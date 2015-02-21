@@ -20,8 +20,15 @@
 			var options = that.options;
 			var all = options.all_selector;
 
-			if(options.singleton) {
-				$(all+'.in').not(that.$element).confirmation('hide');
+			if(options.singleton)
+			{
+				$(all).not(that.$element).each(function()
+				{
+					if( $(this).hasClass('open') )
+					{
+						$(this).confirmation('hide');
+					}
+				});
 			}
 		});
 

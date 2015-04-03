@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width">
 
-	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 	<div class="container">
@@ -31,15 +31,20 @@
 		</div>
 	</div>
 
-	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	<script src="bootstrap-confirmation.js"></script>
 
 	<script>
-	$('[data-toggle="confirmation"]').confirmation();
-	$('.confirmation-callback').confirmation({
-		onConfirm: function() { alert('confirm') },
-		onCancel: function() { alert('cancel') }
+	$(function() {
+		$('body').confirmation({
+			selector: '[data-toggle="confirmation"]'
+		});
+
+		$('.confirmation-callback').confirmation({
+			onConfirm: function() { alert('confirm') },
+			onCancel: function() { alert('cancel') }
+		});
 	});
 	</script>
 </body>

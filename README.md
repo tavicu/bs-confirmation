@@ -1,4 +1,4 @@
-# bootstrap-confirmation v1.0
+# bootstrap-confirmation v1.0.1
 
 This is a fork of ethaizone's [original code](https://github.com/ethaizone/Bootstrap-Confirmation)
 
@@ -12,7 +12,7 @@ Confirmation plugin compatible with Twitter Bootstrap 3 extending Popover
 Create your `button or link` with the `data-toggle="confirmation"`.
 
     <a href="http://google.com" class="btn" data-toggle="confirmation">Confirmation</a>
-    
+
 Enable plugin via JavaScript:
 
     $('[data-toggle="confirmation"]').confirmation();

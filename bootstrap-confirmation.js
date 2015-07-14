@@ -11,7 +11,6 @@
 
 		this.init('confirmation', element, options);
 
-
 		$(element).on('show.bs.confirmation', function(e) {
 			that.options.onShow(e, this);
 
@@ -42,8 +41,6 @@
 			var options = that.options;
 			var all = options.all_selector;
 
-			that.$element.on('click.dismiss.bs.confirmation', '[data-dismiss="confirmation"]', $.proxy(that.hide, that));
-
 			if(that.isPopout()) {
 				if(!event_body) {
 					event_body = $('body').on('click', function (e) {
@@ -51,7 +48,8 @@
 						if(that.$element.has(e.target).length) return;
 						if($('.popover').has(e.target).length) return;
 
-						that.$element.confirmation('hide');
+						that.hide();
+						that.inState.click = false;
 
 						$('body').unbind(e);
 
@@ -69,6 +67,8 @@
 	}
 
 	if (!$.fn.popover || !$.fn.tooltip) throw new Error('Confirmation requires popover.js and tooltip.js');
+
+	Confirmation.VERSION  = '1.0.2'
 
 	Confirmation.DEFAULTS = $.extend({}, $.fn.popover.Constructor.DEFAULTS, {
 		placement 		: 'right',
@@ -108,12 +108,12 @@
 	}
 
 	Confirmation.prototype.setContent = function () {
-		var that = this;
-		var $tip    = this.tip();
-		var title   = this.getTitle();
-		var $btnOk	    = $tip.find('[data-apply="confirmation"]');
-		var $btnCancel  = $tip.find('[data-dismiss="confirmation"]');
-		var options	    = this.options
+		var that       = this;
+		var $tip       = this.tip();
+		var title      = this.getTitle();
+		var $btnOk     = $tip.find('[data-apply="confirmation"]');
+		var $btnCancel = $tip.find('[data-dismiss="confirmation"]');
+		var options    = this.options
 
 		$btnOk.addClass(this.getBtnOkClass())
 			.html(this.getBtnOkLabel())
@@ -123,7 +123,8 @@
 			.off('click').on('click', function(event) {
 				options.onConfirm(event, that.$element);
 
-				that.$element.confirmation('hide');
+				that.hide();
+				that.inState.click = false;
 			});
 
 		$btnCancel.addClass(this.getBtnCancelClass())
@@ -132,7 +133,8 @@
 			.off('click').on('click', function(event){
 				options.onCancel(event, that.$element);
 
-				that.$element.confirmation('hide');
+				that.hide();
+				that.inState.click = false;
 			});
 
 		$tip.find('.popover-title')[this.options.html ? 'html' : 'text'](title);
@@ -203,7 +205,7 @@
 	Confirmation.prototype.isPopout = function () {
 		var popout;
 		var $e = this.$element;
-		var o = this.options;
+		var o  = this.options;
 
 		popout = $e.attr('data-popout') || (typeof o.popout == 'function' ? o.popout.call($e[0]) :	o.popout);
 
@@ -221,11 +223,11 @@
 		var that = this;
 
 		return this.each(function () {
-			var $this   = $(this);
-			var data    = $this.data('bs.confirmation');
-			var options = typeof option == 'object' && option;
+			var $this            = $(this);
+			var data             = $this.data('bs.confirmation');
+			var options          = typeof option == 'object' && option;
 
-			options = options || {};
+			options              = options || {};
 			options.all_selector = that.selector;
 
 			if (!data && option == 'destroy') return;

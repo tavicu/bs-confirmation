@@ -121,9 +121,6 @@
 
 
 		if(this.getMessageName()) {
-
-
-
 			$tip.css('min-width', '300px');
 			$content.addClass('container-fluid');
 			var form = $('<form>').attr('action', this.getHref()).attr('target', this.getTarget());
@@ -139,12 +136,13 @@
 				.attr('placeholder', this.getMessagePlaceholder())
 				.addClass('form-control input-sm');
 
-			form.append($('<div>', {'class' :'form-group'}).append(input));
+			form.append($('<div>', {'class' :'row'}).append($('<div>', {'class' :'col-sm-12'}).append(input)));
 			form.append(
-				$('<div>', {'class' :'form-group'})
-					.append($btnOk)
-					.append('&nbsp;')
-					.append($btnCancel)
+				$('<div>', {'class' :'row'})
+					.append($('<div>', {'class' :'col-sm-12'})
+						.append($btnOk)
+						.append('&nbsp;')
+						.append($btnCancel))
 			);
 
 			$content.html(form);

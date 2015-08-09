@@ -123,6 +123,13 @@
 			.off('click').on('click', function(event) {
 				options.onConfirm(event, that.$element);
 
+				// If the button is a submit one
+				if (that.$element.attr('type') && that.$element.attr('type') === 'submit') {
+					// Get the form related to this button then store submiting in closure
+					var form = that.$element.parents('form:first');
+					form.submit();
+				}
+
 				that.hide();
 				that.inState.click = false;
 			});

@@ -68,7 +68,7 @@
 
 	if (!$.fn.popover || !$.fn.tooltip) throw new Error('Confirmation requires popover.js and tooltip.js');
 
-	Confirmation.VERSION  = '1.0.2'
+	Confirmation.VERSION  = '1.0.3'
 
 	Confirmation.DEFAULTS = $.extend({}, $.fn.popover.Constructor.DEFAULTS, {
 		placement 		: 'right',

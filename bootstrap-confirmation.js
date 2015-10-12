@@ -1,3 +1,7 @@
+/*!
+ * Bootstrap Confirmation v1.0.4
+ * https://github.com/tavicu/bs-confirmation
+ */
 +function ($) {
 	'use strict';
 
@@ -68,7 +72,7 @@
 
 	if (!$.fn.popover || !$.fn.tooltip) throw new Error('Confirmation requires popover.js and tooltip.js');
 
-	Confirmation.VERSION  = '1.0.3'
+	Confirmation.VERSION  = '1.0.4'
 
 	Confirmation.DEFAULTS = $.extend({}, $.fn.popover.Constructor.DEFAULTS, {
 		placement 		: 'right',
@@ -154,56 +158,56 @@
 		var $e = this.$element;
 		var o  = this.options;
 
-		return $e.attr('data-btnOkClass') || (typeof o.btnOkClass == 'function' ? o.btnOkClass.call($e[0]) : o.btnOkClass);
+		return $e.attr('data-btnOkClass') || (typeof o.btnOkClass == 'function' ? o.btnOkClass.call(this, $e[0]) : o.btnOkClass);
 	}
 
 	Confirmation.prototype.getBtnOkLabel = function () {
 		var $e = this.$element;
 		var o  = this.options;
 
-		return $e.attr('data-btnOkLabel') || (typeof o.btnOkLabel == 'function' ? o.btnOkLabel.call($e[0]) : o.btnOkLabel);
+		return $e.attr('data-btnOkLabel') || (typeof o.btnOkLabel == 'function' ? o.btnOkLabel.call(this, $e[0]) : o.btnOkLabel);
 	}
 
 	Confirmation.prototype.getBtnOkIcon = function () {
 		var $e = this.$element;
 		var o  = this.options;
 
-		return $e.attr('data-btnOkIcon') || (typeof o.btnOkIcon == 'function' ?  o.btnOkIcon.call($e[0]) : o.btnOkIcon);
+		return $e.attr('data-btnOkIcon') || (typeof o.btnOkIcon == 'function' ?  o.btnOkIcon.call(this, $e[0]) : o.btnOkIcon);
 	}
 
 	Confirmation.prototype.getBtnCancelClass = function () {
 		var $e = this.$element;
 		var o  = this.options;
 
-		return $e.attr('data-btnCancelClass') || (typeof o.btnCancelClass == 'function' ? o.btnCancelClass.call($e[0]) : o.btnCancelClass);
+		return $e.attr('data-btnCancelClass') || (typeof o.btnCancelClass == 'function' ? o.btnCancelClass.call(this, $e[0]) : o.btnCancelClass);
 	}
 
 	Confirmation.prototype.getBtnCancelLabel = function () {
 		var $e = this.$element;
 		var o  = this.options;
 
-		return $e.attr('data-btnCancelLabel') || (typeof o.btnCancelLabel == 'function' ? o.btnCancelLabel.call($e[0]) : o.btnCancelLabel);
+		return $e.attr('data-btnCancelLabel') || (typeof o.btnCancelLabel == 'function' ? o.btnCancelLabel.call(this, $e[0]) : o.btnCancelLabel);
 	}
 
 	Confirmation.prototype.getBtnCancelIcon = function () {
 		var $e = this.$element;
 		var o  = this.options;
 
-		return $e.attr('data-btnCancelIcon') || (typeof o.btnCancelIcon == 'function' ? o.btnCancelIcon.call($e[0]) : o.btnCancelIcon);
+		return $e.attr('data-btnCancelIcon') || (typeof o.btnCancelIcon == 'function' ? o.btnCancelIcon.call(this, $e[0]) : o.btnCancelIcon);
 	}
 
 	Confirmation.prototype.getHref = function () {
 		var $e = this.$element;
 		var o  = this.options;
 
-		return $e.attr('data-href') || (typeof o.href == 'function' ? o.href.call($e[0]) : o.href);
+		return $e.attr('data-href') || (typeof o.href == 'function' ? o.href.call(this, $e[0]) : o.href);
 	}
 
 	Confirmation.prototype.getTarget = function () {
 		var $e = this.$element;
 		var o  = this.options;
 
-		return $e.attr('data-target') || (typeof o.target == 'function' ? o.target.call($e[0]) : o.target);
+		return $e.attr('data-target') || (typeof o.target == 'function' ? o.target.call(this, $e[0]) : o.target);
 	}
 
 	Confirmation.prototype.isPopout = function () {
@@ -211,7 +215,7 @@
 		var $e = this.$element;
 		var o  = this.options;
 
-		popout = $e.attr('data-popout') || (typeof o.popout == 'function' ? o.popout.call($e[0]) :	o.popout);
+		popout = $e.attr('data-popout') || (typeof o.popout == 'function' ? o.popout.call(this, $e[0]) :	o.popout);
 
 		if(popout == 'false') popout = false;
 

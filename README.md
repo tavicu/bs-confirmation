@@ -1,4 +1,4 @@
-# bootstrap-confirmation v1.0.3
+# bootstrap-confirmation v1.0.4
 
 This is a fork of ethaizone's [original code](https://github.com/ethaizone/Bootstrap-Confirmation)
 

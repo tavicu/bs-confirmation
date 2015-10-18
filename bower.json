@@ -1,6 +1,6 @@
 {
 	"name": "bs-confirmation",
-	"version": "1.0.4",
+	"version": "1.0.5",
 	"main": "bootstrap-confirmation.js",
 	"keywords": [ "bootstrap", "confirm", "confirmation"],
 	"description": "Confirmation plugin compatible with Twitter Bootstrap 3 extending Popover",

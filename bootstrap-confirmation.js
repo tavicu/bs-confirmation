@@ -1,5 +1,5 @@
 /*!
- * Bootstrap Confirmation v1.0.4
+ * Bootstrap Confirmation v1.0.5
  * https://github.com/tavicu/bs-confirmation
  */
 +function ($) {
@@ -65,14 +65,20 @@
 			}
 		});
 
-		$(element).on('click', function(e) {
-			e.preventDefault();
-		});
+		if(options.selector) {
+			$(element).on('click.bs.confirmation', options.selector, function(e) {
+				e.preventDefault();
+			});
+		} else {
+			$(element).on('click.bs.confirmation', function(e) {
+				e.preventDefault();
+			});
+		}
 	}
 
 	if (!$.fn.popover || !$.fn.tooltip) throw new Error('Confirmation requires popover.js and tooltip.js');
 
-	Confirmation.VERSION  = '1.0.4'
+	Confirmation.VERSION  = '1.0.5'
 
 	Confirmation.DEFAULTS = $.extend({}, $.fn.popover.Constructor.DEFAULTS, {
 		placement 		: 'right',

@@ -53,7 +53,11 @@
 						if($('.popover').has(e.target).length) return;
 
 						that.hide();
-						that.inState.click = false;
+
+						// bootstrap 3.3.5 introduces inState, check existence for backwards compatibility
+						if (that.hasOwnProperty('inState')) {
+							that.inState.click = false;
+						}
 
 						$('body').unbind(e);
 
@@ -138,7 +142,11 @@
 					that.$element.closest('form:first').submit();
 
 				that.hide();
-				that.inState.click = false;
+				
+				// bootstrap 3.3.5 introduces inState, check existence for backwards compatibility
+				if (that.hasOwnProperty('inState')) {
+					that.inState.click = false;
+				}
 			});
 
 		$btnCancel.addClass(this.getBtnCancelClass())
@@ -148,7 +156,11 @@
 				options.onCancel(event, that.$element);
 
 				that.hide();
-				that.inState.click = false;
+				
+				// bootstrap 3.3.5 introduces inState, check existence for backwards compatibility
+				if (that.hasOwnProperty('inState')) {
+					that.inState.click = false;
+				}
 			});
 
 		$tip.find('.popover-title')[this.options.html ? 'html' : 'text'](title);

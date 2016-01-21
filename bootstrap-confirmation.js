@@ -135,13 +135,15 @@
 			.attr('href', this.getHref())
 			.attr('target', this.getTarget())
 			.off('click').on('click', function(event) {
-				options.onConfirm(event, that.$element);
+				var res = options.onConfirm(event, that.$element);
 
 				// If the button is a submit one
 				if (that.$element.attr('type') == 'submit')
 					that.$element.closest('form:first').submit();
 
-				that.hide();
+                                if (res !== false) {
+                                    that.hide();
+                                }
 				
 				// bootstrap 3.3.5 introduces inState, check existence for backwards compatibility
 				if (that.hasOwnProperty('inState')) {
@@ -153,9 +155,11 @@
 			.html(this.getBtnCancelLabel())
 			.prepend($('<i></i>').addClass(this.getBtnCancelIcon()), " ")
 			.off('click').on('click', function(event){
-				options.onCancel(event, that.$element);
+				var res = options.onCancel(event, that.$element);
 
-				that.hide();
+				if (res !== false) {
+                                    that.hide();
+                                }
 				
 				// bootstrap 3.3.5 introduces inState, check existence for backwards compatibility
 				if (that.hasOwnProperty('inState')) {

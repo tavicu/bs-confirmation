@@ -11,12 +11,21 @@ Confirmation plugin compatible with Twitter Bootstrap 3 extending Popover
 
 Create your `button or link` with the `data-toggle="confirmation"`.
 
-    <a href="http://google.com" class="btn" data-toggle="confirmation">Confirmation</a>
+    <a data-href="http://google.com" class="btn" data-toggle="confirmation">Confirmation</a>
 
 Enable plugin via JavaScript:
 
     $('[data-toggle="confirmation"]').confirmation();
+    
+Or if you want to use links href:
 
+    <a href="http://google.com" class="btn" data-toggle="confirmation">Confirmation</a>
+    $('[data-toggle="confirmation"]').confirmation({
+        href: function(elem){
+            return $(elem).attr('href');
+        }
+    });
+    
 Or if you want to assing to one element
 
     <a href="http://google.com" class="btn confirmation">Confirmation</a>

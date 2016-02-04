@@ -28,7 +28,7 @@ Or if you want to use links href:
     
 Or if you want to assing to one element
 
-    <a href="http://google.com" class="btn confirmation">Confirmation</a>
+    <a data-href="http://google.com" class="btn confirmation">Confirmation</a>
     $('.confirmation').confirmation();
 
 ## Options

@@ -135,7 +135,7 @@
 
 				// If the button is a submit one
 				if (that.$element.attr('type') == 'submit')
-					that.$element.closest('form:first').submit();
+					that.$element.closest('form').first().submit();
 
 				that.hide();
 				that.inState.click = false;

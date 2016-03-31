@@ -14,7 +14,14 @@
 		var that = this;
 
 		this.init('confirmation', element, options);
-
+		// cancel original event
+        this.$element.on(this.options.trigger, function (e, ack) {
+            if (!ack) {
+                e.preventDefault();
+                e.stopPropagation();
+                e.stopImmediatePropagation();
+            }
+        });
 		$(element).on('show.bs.confirmation', function(e) {
 			that.options.onShow(e, this);
 
@@ -64,16 +71,6 @@
 				}
 			}
 		});
-
-		if(options.selector) {
-			$(element).on('click.bs.confirmation', options.selector, function(e) {
-				e.preventDefault();
-			});
-		} else {
-			$(element).on('click.bs.confirmation', function(e) {
-				e.preventDefault();
-			});
-		}
 	}
 
 	if (!$.fn.popover || !$.fn.tooltip) throw new Error('Confirmation requires popover.js and tooltip.js');
@@ -123,7 +120,8 @@
 		var title      = this.getTitle();
 		var $btnOk     = $tip.find('[data-apply="confirmation"]');
 		var $btnCancel = $tip.find('[data-dismiss="confirmation"]');
-		var options    = this.options
+		var options    = this.options;
+		var $element   = this.$element;
 
 		$btnOk.addClass(this.getBtnOkClass())
 			.html(this.getBtnOkLabel())
@@ -131,12 +129,9 @@
 			.attr('href', this.getHref())
 			.attr('target', this.getTarget())
 			.off('click').on('click', function(event) {
-				options.onConfirm(event, that.$element);
-
-				// If the button is a submit one
-				if (that.$element.attr('type') == 'submit')
-					that.$element.closest('form').first().submit();
-
+				options.onConfirm && options.onConfirm(evt, $element);
+				$element.trigger('confirmed.bs.confirmation');
+				$element.trigger(options.trigger, [true]);
 				that.hide();
 				that.inState.click = false;
 			});
@@ -145,8 +140,8 @@
 			.html(this.getBtnCancelLabel())
 			.prepend($('<i></i>').addClass(this.getBtnCancelIcon()), " ")
 			.off('click').on('click', function(event){
-				options.onCancel(event, that.$element);
-
+				options.onCancel && options.onCancel(event, $element);
+				$element.trigger('canceled.bs.confirmation');
 				that.hide();
 				that.inState.click = false;
 			});

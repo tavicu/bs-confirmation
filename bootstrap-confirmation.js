@@ -69,16 +69,12 @@
 			$(element).on('click.bs.confirmation', options.selector, function(e, ack) {
 				if (!ack) {
 					e.preventDefault();
-					e.stopPropagation();
-					e.stopImmediatePropagation();
 				}
 			});
 		} else {
 			$(element).on('click.bs.confirmation', function(e, ack) {
 				if (!ack) {
 					e.preventDefault();
-					e.stopPropagation();
-					e.stopImmediatePropagation();
 				}
 			});
 		}

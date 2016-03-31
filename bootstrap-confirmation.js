@@ -66,12 +66,20 @@
 		});
 
 		if(options.selector) {
-			$(element).on('click.bs.confirmation', options.selector, function(e) {
-				e.preventDefault();
+			$(element).on('click.bs.confirmation', options.selector, function(e, ack) {
+				if (!ack) {
+					e.preventDefault();
+					e.stopPropagation();
+					e.stopImmediatePropagation();
+				}
 			});
 		} else {
-			$(element).on('click.bs.confirmation', function(e) {
-				e.preventDefault();
+			$(element).on('click.bs.confirmation', function(e, ack) {
+				if (!ack) {
+					e.preventDefault();
+					e.stopPropagation();
+					e.stopImmediatePropagation();
+				}
 			});
 		}
 	}
@@ -133,9 +141,7 @@
 			.off('click').on('click', function(event) {
 				options.onConfirm(event, that.$element);
 
-				// If the button is a submit one
-				if (that.$element.attr('type') == 'submit')
-					that.$element.closest('form').first().submit();
+				that.$element.trigger('click.bs.confirmation', [true]);
 
 				that.hide();
 				that.inState.click = false;

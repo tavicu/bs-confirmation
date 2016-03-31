@@ -129,7 +129,7 @@
 			.attr('href', this.getHref())
 			.attr('target', this.getTarget())
 			.off('click').on('click', function(event) {
-				options.onConfirm && options.onConfirm(evt, $element);
+				options.onConfirm && options.onConfirm(event, $element);
 				$element.trigger('confirmed.bs.confirmation');
 				$element.trigger(options.trigger, [true]);
 				that.hide();

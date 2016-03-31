@@ -67,11 +67,11 @@
 
 		if(options.selector) {
 			$(element).on('click.bs.confirmation', options.selector, function(e, ack) {
-				if (!ack) e.preventDefault();
+				if (that.enabled && !ack) e.preventDefault();
 			});
 		} else {
 			$(element).on('click.bs.confirmation', function(e, ack) {
-				if (!ack) e.preventDefault();
+				if (that.enabled && !ack) e.preventDefault();
 			});
 		}
 	}

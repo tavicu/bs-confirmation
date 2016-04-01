@@ -132,10 +132,13 @@
 			.attr('target', this.getTarget())
 			.off('click').on('click', function(event) {
 				options.onConfirm(event, that.$element);
-
+				if (event.isDefaultPrevented())return;
+				var e = $.Event('confirm.bs.confirmation');
+				that.$element.trigger(e);
+				if (e.isDefaultPrevented())return;
 				that.$element.trigger('click.confirmation', [true]);
 
-				that.hide();
+				that.hide(function () { that.$element.trigger('confirmed.bs.confirmation'); });
 				that.inState.click = false;
 			});
 
@@ -144,8 +147,11 @@
 			.prepend($('<i></i>').addClass(this.getBtnCancelIcon()), " ")
 			.off('click').on('click', function(event){
 				options.onCancel(event, that.$element);
-
-				that.hide();
+				if (event.isDefaultPrevented())return;
+				var e = $.Event('cancel.bs.confirmation');
+				that.$element.trigger(e);
+				if (e.isDefaultPrevented()) return;
+				that.hide(function () { that.$element.trigger('canceled.bs.confirmation'); });
 				that.inState.click = false;
 			});
 

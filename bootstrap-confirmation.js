@@ -66,11 +66,11 @@
 		});
 
 		if(options.selector) {
-			$(element).on('click.bs.confirmation', options.selector, function(e, ack) {
+			$(element).on('click.confirmation', options.selector, function(e, ack) {
 				if (that.enabled && !ack) e.preventDefault();
 			});
 		} else {
-			$(element).on('click.bs.confirmation', function(e, ack) {
+			$(element).on('click.confirmation', function(e, ack) {
 				if (that.enabled && !ack) e.preventDefault();
 			});
 		}
@@ -133,7 +133,7 @@
 			.off('click').on('click', function(event) {
 				options.onConfirm(event, that.$element);
 
-				that.$element.trigger('click.bs.confirmation', [true]);
+				that.$element.trigger('click.confirmation', [true]);
 
 				that.hide();
 				that.inState.click = false;

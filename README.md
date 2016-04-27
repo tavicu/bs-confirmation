@@ -35,6 +35,9 @@ Or if you want to assing to one element
 
 In addition to the standard bootstrap popover options, you now have access to the following options
 
++ **title**
+Set title text. `default: Are you sure?`
+
 + **btnOkClass**
 Set the Ok button class. `default: btn btn-sm btn-danger`
 
@@ -70,6 +73,7 @@ Callback for confirm button. `default: function(event, element){}`
 
 + **onCancel**
 Callback for cancel button. `default: function(event, element){}`
+
 
 ## Copyright and license
 

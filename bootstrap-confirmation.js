@@ -152,9 +152,9 @@
 
 					form.submit();
 
-                    if ($hiddenInput != null) {
-                        $hiddenInput.remove();
-                    }
+					if ($hiddenInput != null) {
+						$hiddenInput.remove();
+					}
 				}
 
 				that.hide();

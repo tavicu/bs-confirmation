@@ -135,17 +135,17 @@
 
 				// If the button is a submit one
 				if (that.$element.attr('type') == 'submit') {
-                    var $hiddenInput = null;
+					var $hiddenInput = null;
 					var form = that.$element.closest('form').first();
 					var name = that.$element.attr('name');
 
 					// If the submit-button has form-data to transmit
-					if (name.length > 0) {
+					if (typeof name != "undefined" && name.length > 0) {
 						var value = that.$element.attr('value');
 
-                        // Add the data from the submit-button to the form as hidden input.
-                        // These data would be lost by using form.submit(), bypassing the button.
-                        $hiddenInput = $("<input type='hidden' name='" + name + "' value='" + value + "' />");
+						// Add the data from the submit-button to the form as hidden input.
+						// These data would be lost by using form.submit(), bypassing the button.
+						$hiddenInput = $("<input type='hidden' name='" + name + "' value='" + value + "' />");
 
 						that.$element.prepend($hiddenInput);
 					}

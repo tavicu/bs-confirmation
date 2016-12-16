@@ -53,7 +53,8 @@
 						if($('.popover').has(e.target).length) return;
 
 						that.hide();
-						that.inState.click = false;
+						if(this.inState)
+							that.inState.click = false;
 
 						$('body').unbind(e);
 
@@ -89,6 +90,8 @@
 		btnCancelClass 	: 'btn btn-sm btn-default',
 		btnCancelLabel 	: 'Cancel',
 		btnCancelIcon 	: 'glyphicon glyphicon-remove',
+		messageName		: null,
+		messagePlaceholder: '',
 		href 			: '#',
 		target 			: '_self',
 		singleton 		: true,
@@ -123,7 +126,37 @@
 		var title      = this.getTitle();
 		var $btnOk     = $tip.find('[data-apply="confirmation"]');
 		var $btnCancel = $tip.find('[data-dismiss="confirmation"]');
+		var $content   = $tip.find('.popover-content');
 		var options    = this.options
+
+
+		if(this.getMessageName()) {
+			$tip.css('min-width', '300px');
+			$content.addClass('container-fluid');
+			var form = $('<form>').attr('action', this.getHref()).attr('target', this.getTarget());
+
+			var $btnOk = $('<button>')
+				.attr('type', 'submit')
+				.addClass(this.getBtnOkClass())
+				.prepend($('<i>').addClass(this.getBtnOkIcon()), this.getBtnOkLabel());
+
+			var input = $('<input>')
+				.attr('type', 'text')
+				.attr('name', this.getMessageName())
+				.attr('placeholder', this.getMessagePlaceholder())
+				.addClass('form-control input-sm');
+
+			form.append($('<div>', {'class' :'row'}).append($('<div>', {'class' :'col-sm-12'}).append(input)));
+			form.append(
+				$('<div>', {'class' :'row'})
+					.append($('<div>', {'class' :'col-sm-12'})
+						.append($btnOk)
+						.append('&nbsp;')
+						.append($btnCancel))
+			);
+
+			$content.html(form);
+		}
 
 		$btnOk.addClass(this.getBtnOkClass())
 			.html(this.getBtnOkLabel())
@@ -138,7 +171,8 @@
 					that.$element.closest('form').first().submit();
 
 				that.hide();
-				that.inState.click = false;
+				if(this.inState)
+					that.inState.click = false;
 			});
 
 		$btnCancel.addClass(this.getBtnCancelClass())
@@ -148,7 +182,8 @@
 				options.onCancel(event, that.$element);
 
 				that.hide();
-				that.inState.click = false;
+				if(this.inState)
+					that.inState.click = false;
 			});
 
 		$tip.find('.popover-title')[this.options.html ? 'html' : 'text'](title);
@@ -214,6 +249,20 @@
 		var o  = this.options;
 
 		return $e.attr('data-target') || (typeof o.target == 'function' ? o.target.call(this, $e[0]) : o.target);
+	}
+
+	Confirmation.prototype.getMessageName = function () {
+		var $e = this.$element;
+		var o  = this.options;
+
+		return $e.attr('data-message-name') || (typeof o.target == 'function' ? o.target.call($e[0]) : o.messageName);
+	}
+
+	Confirmation.prototype.getMessagePlaceholder = function () {
+		var $e = this.$element;
+		var o  = this.options;
+
+		return $e.attr('data-message-placeholder') || (typeof o.target == 'function' ? o.target.call($e[0]) : o.messagePlaceholder);
 	}
 
 	Confirmation.prototype.isPopout = function () {

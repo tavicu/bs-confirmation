@@ -66,12 +66,12 @@
 		});
 
 		if(options.selector) {
-			$(element).on('click.bs.confirmation', options.selector, function(e) {
-				e.preventDefault();
+			$(element).on('click.confirmation', options.selector, function(e, ack) {
+				if (that.enabled && !ack) e.preventDefault();
 			});
 		} else {
-			$(element).on('click.bs.confirmation', function(e) {
-				e.preventDefault();
+			$(element).on('click.confirmation', function(e, ack) {
+				if (that.enabled && !ack) e.preventDefault();
 			});
 		}
 	}
@@ -132,12 +132,13 @@
 			.attr('target', this.getTarget())
 			.off('click').on('click', function(event) {
 				options.onConfirm(event, that.$element);
+				if (event.isDefaultPrevented())return;
+				var e = $.Event('confirm.bs.confirmation');
+				that.$element.trigger(e);
+				if (e.isDefaultPrevented())return;
+				that.$element.trigger('click.confirmation', [true]);
 
-				// If the button is a submit one
-				if (that.$element.attr('type') == 'submit')
-					that.$element.closest('form').first().submit();
-
-				that.hide();
+				that.hide(function () { that.$element.trigger('confirmed.bs.confirmation'); });
 				that.inState.click = false;
 			});
 
@@ -146,8 +147,11 @@
 			.prepend($('<i></i>').addClass(this.getBtnCancelIcon()), " ")
 			.off('click').on('click', function(event){
 				options.onCancel(event, that.$element);
-
-				that.hide();
+				if (event.isDefaultPrevented())return;
+				var e = $.Event('cancel.bs.confirmation');
+				that.$element.trigger(e);
+				if (e.isDefaultPrevented()) return;
+				that.hide(function () { that.$element.trigger('canceled.bs.confirmation'); });
 				that.inState.click = false;
 			});
 

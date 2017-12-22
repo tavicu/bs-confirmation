@@ -4,7 +4,7 @@
     "keywords": ["bootstrap", "bootstrap dialog", "bootstrap confirmation", "confirmation"],
     "description": "Confirmation plugin compatible with Twitter Bootstrap 3 extending Popover",
     "homepage": "https://github.com/tavicu/bs-confirmation",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "authors": [
         {
             "name": "Tavicu",

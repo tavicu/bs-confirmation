@@ -16,7 +16,7 @@ Create your `button or link` with the `data-toggle="confirmation"`.
 Enable plugin via JavaScript:
 
     $('[data-toggle="confirmation"]').confirmation();
-    
+
 Or if you want to use links href:
 
     <a href="http://google.com" class="btn" data-toggle="confirmation">Confirmation</a>
@@ -25,7 +25,7 @@ Or if you want to use links href:
             return $(elem).attr('href');
         }
     });
-    
+
 Or if you want to assing to one element
 
     <a data-href="http://google.com" class="btn confirmation">Confirmation</a>

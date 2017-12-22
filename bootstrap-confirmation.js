@@ -99,7 +99,7 @@
 		onCancel 		: function(event, element){},
 		template 		:   '<div class="popover"><div class="arrow"></div>'
 							+ '<h3 class="popover-title"></h3>'
-							+ '<div class="popover-content">'
+							+ '<div class="popover-content btn-group">'
 							+ '<a data-apply="confirmation">Yes</a>'
 							+ '<a data-dismiss="confirmation">No</a>'
 							+ '</div>'

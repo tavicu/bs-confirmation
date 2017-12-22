@@ -1,5 +1,5 @@
 /*!
- * Bootstrap Confirmation v1.0.6
+ * Bootstrap Confirmation v1.0.7
  * https://github.com/tavicu/bs-confirmation
  */
 +function ($) {
@@ -63,7 +63,7 @@
 
     if (!$.fn.popover || !$.fn.tooltip) throw new Error('Confirmation requires popover.js and tooltip.js');
 
-    Confirmation.VERSION  = '1.0.6'
+    Confirmation.VERSION  = '1.0.7'
 
     Confirmation.DEFAULTS = $.extend({}, $.fn.popover.Constructor.DEFAULTS, {
         placement       : 'right',

@@ -1,6 +1,6 @@
 Package.describe({
     name: "tavicu:bs-confirmation",
-    version: "1.0.6",
+    version: "1.0.7",
     summary: "Confirmation plugin compatible with Twitter Bootstrap 3 extending Popover",
     git: "https://github.com/tavicu/bs-confirmation.git"
 });

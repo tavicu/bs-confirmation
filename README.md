@@ -11,69 +11,59 @@ Confirmation plugin compatible with Twitter Bootstrap 3 extending Popover
 
 Create your `button or link` with the `data-toggle="confirmation"`.
 
-    <a data-href="http://google.com" class="btn" data-toggle="confirmation">Confirmation</a>
+    <a href="http://google.com" class="btn" data-toggle="confirmation">Confirmation</a>
 
 Enable plugin via JavaScript:
 
     $('[data-toggle="confirmation"]').confirmation();
 
-Or if you want to use links href:
+Add options when initialized:
 
     <a href="http://google.com" class="btn" data-toggle="confirmation">Confirmation</a>
     $('[data-toggle="confirmation"]').confirmation({
-        href: function(elem){
-            return $(elem).attr('href');
-        }
+        placement: 'left'
     });
 
-Or if you want to assing to one element
+Enable plugin on class instead of data attribute
 
-    <a data-href="http://google.com" class="btn confirmation">Confirmation</a>
-    $('.confirmation').confirmation();
+    <a href="http://google.com" class="btn bs-confirmation">Confirmation</a>
+    $('.bs-confirmation').confirmation();
 
 ## Options
 
 In addition to the standard bootstrap popover options, you now have access to the following options
 
-+ **title**
-Set title text. `default: Are you sure?`
+| Name           | Type               | Default                      | Description                                                                                                      |
+|----------------|--------------------|------------------------------|------------------------------------------------------------------------------------------------------------------|
+| title          | string \| function | 'Are you sure?'              | Default title value if none of these attribute isn't present (`data-confirmation-title`, `data-title`, `title`). |
+| btnOkClass     | string \| function | 'btn btn-sm btn-danger'      | Class of confirm button. Default value if `data-btnOkClass` attribute isn't present.                             |
+| btnOkLabel     | string \| function | 'Delete'                     | Label of confirm button. Default value if `data-btnOkLabel` attribute isn't present.                             |
+| btnOkIcon      | string \| function | 'glyphicon glyphicon-ok'     | Icon of confirm button. Default value if `data-btnOkIcon` attribute isn't present.                               |
+| btnCancelClass | string \| function | 'btn btn-sm btn-default'     | Class of cancel button. Default value if `data-btnOkClass` attribute isn't present.                              |
+| btnCancelLabel | string \| function | 'Cancel'                     | Label of cancel button. Default value if `data-btnOkLabel` attribute isn't present.                              |
+| btnCancelIcon  | string \| function | 'glyphicon glyphicon-remove' | Icon of cancel button. Default value if `data-btnOkIcon` attribute isn't present.                                |
+| singleton      | boolean            | true                         | Set true to allow only one confirmation to show at a time.                                                       |
+| popout         | boolean            | true                         | Set true to hide the confirmation when user clicks outside of it.                                                |
+| onShow         | function           | function(event, element) {}  | Callback when popup show.                                                                                        |
+| onHide         | function           | function(event, element) {}  | Callback when popup hide.                                                                                        |
+| onConfirm      | function           | function(event, element) {}  | Callback when confirm button is pressed.                                                                         |
+| onCancel       | function           | function(event, element) {}  | Callback when cancel button is pressed.                                                                          |
 
-+ **btnOkClass**
-Set the Ok button class. `default: btn btn-sm btn-danger`
+## Events
 
-+ **btnOkLabel**
-Set the Ok button label. `default: Delete`
+| Event Type               | Description                                                                                                               |
+|--------------------------|---------------------------------------------------------------------------------------------------------------------------|
+| show.bs.confirmation     | This event fires immediately when the `show` instance method is called.                                                   |
+| shown.bs.confirmation    | This event is fired when the confirmation has been made visible to the user (will wait for CSS transitions to complete).  |
+| hide.bs.confirmation     | This event is fired immediately when the `hide` instance method has been called.                                          |
+| hidden.bs.confirmation   | This event is fired when the popover has finished being hidden from the user (will wait for CSS transitions to complete). |
+| inserted.bs.confirmation | This event is fired after the `show.bs.confirmation` event when the popover template has been added to the DOM.           |
+| confirm.bs.confirmation  | This event is fired when the user click confirmation button.                                                              |
+| cancel.bs.confirmation   | This event is fired when the user click cancel button.                                                                    |
 
-+ **btnOkIcon**
-Set the Ok button icon. `default: glyphicon glyphicon-ok`
-
-+ **btnCancelClass**
-Set the Ok button class. `default: btn btn-sm btn-default`
-
-+ **btnCancelLabel**
-Set the Ok button label. `default: Cancel`
-
-+ **btnCancelIcon**
-Set the Ok button icon. `default: glyphicon glyphicon-remove`
-
-+ **singleton**
-Set true to allow only one confirmation to show at a time. `default: true`
-
-+ **popout**
-Set true to hide the confirmation when user clicks outside of it. `default: true`
-
-+ **onShow**
-Callback when popup show. `default: function(event, element){}`
-
-+ **onHide**
-Callback when popup hide. `default: function(event, element){}`
-
-+ **onConfirm**
-Callback for confirm button. `default: function(event, element){}`
-
-+ **onCancel**
-Callback for cancel button. `default: function(event, element){}`
-
+    $('[data-toggle="confirmation"]').on('confirm.bs.confirmation', function () {
+        // do something…
+    })
 
 ## Copyright and license
 

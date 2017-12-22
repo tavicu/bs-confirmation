@@ -5,35 +5,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
 
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h1>Default options with datta toggle</h1>
-                <pre>$('[data-toggle="confirmation"]').confirmation();</pre>
-                <a href="#" class="btn btn-default" data-toggle="confirmation">Click me</a>
-            </div>
+        <div>
+            <h1>Default options with datta toggle</h1>
+            <pre>&lt;a href=&quot;http://www.google.com&quot; class=&quot;btn btn-default&quot; data-toggle=&quot;confirmation&quot;&gt;Click me&lt;/a&gt;
+
+$('[data-toggle="confirmation"]').confirmation();</pre>
+
+            <a href="http://www.google.com" class="btn btn-default" data-toggle="confirmation">Click me</a>
         </div>
 
-        <div class="row">
-            <div class="col-md-12">
-                <h1>With callback functions</h1>
-                <pre>$('.confirmation-callback').confirmation({
-    onConfirm: function(event) { alert('confirm') },
-    onCancel: function(event) { alert('cancel') }
+        <div>
+            <h1>With callback functions</h1>
+            <pre>&lt;a href=&quot;#confirm&quot; class=&quot;btn btn-default confirmation-callback&quot;&gt;Click me&lt;/a&gt;
+
+$('.confirmation-callback').confirmation({
+    onConfirm: function(event, element) { alert('confirm') },
+    onCancel: function(event, element) { alert('cancel') }
 });</pre>
 
-                <a href="#" class="btn btn-default confirmation-callback">Click me</a>
-
-            </div>
+            <a href="#confirm" class="btn btn-default confirmation-callback">Click me</a>
         </div>
     </div>
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
-    <script src="bootstrap-confirmation.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+    <script src="bootstrap-confirmation.js"></script>
 
     <script>
     $(function() {
@@ -42,8 +42,8 @@
         });
 
         $('.confirmation-callback').confirmation({
-            onConfirm: function() { alert('confirm') },
-            onCancel: function() { alert('cancel') }
+            onConfirm: function(event, element) { alert('confirm') },
+            onCancel: function(event, element) { alert('cancel') }
         });
     });
     </script>

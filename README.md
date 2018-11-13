@@ -39,9 +39,9 @@ In addition to the standard bootstrap popover options, you now have access to th
 | btnOkClass     | string \| function | 'btn btn-sm btn-danger'      | Class of confirm button. Default value if `data-btn-ok-class` attribute isn't present.                             |
 | btnOkLabel     | string \| function | 'Delete'                     | Label of confirm button. Default value if `data-btn-ok-label` attribute isn't present.                             |
 | btnOkIcon      | string \| function | 'glyphicon glyphicon-ok'     | Icon of confirm button. Default value if `data-btn-ok-icon` attribute isn't present.                               |
-| btnCancelClass | string \| function | 'btn btn-sm btn-default'     | Class of cancel button. Default value if `data-btn-ok-class` attribute isn't present.                              |
-| btnCancelLabel | string \| function | 'Cancel'                     | Label of cancel button. Default value if `data-btn-ok-label` attribute isn't present.                              |
-| btnCancelIcon  | string \| function | 'glyphicon glyphicon-remove' | Icon of cancel button. Default value if `data-btn-ok-icon` attribute isn't present.                                |
+| btnCancelClass | string \| function | 'btn btn-sm btn-default'     | Class of cancel button. Default value if `data-btn-cancel-class` attribute isn't present.                              |
+| btnCancelLabel | string \| function | 'Cancel'                     | Label of cancel button. Default value if `data-btn-cancel-label` attribute isn't present.                              |
+| btnCancelIcon  | string \| function | 'glyphicon glyphicon-remove' | Icon of cancel button. Default value if `data-btn-cancel-icon` attribute isn't present.                                |
 | singleton      | boolean            | true                         | Set true to allow only one confirmation to show at a time.                                                       |
 | popout         | boolean            | true                         | Set true to hide the confirmation when user clicks outside of it.                                                |
 | onShow         | function           | function(event, element) {}  | Callback when popup show.                                                                                        |

@@ -124,7 +124,20 @@
                     var novalidate = form.attr('novalidate') !== undefined;
 
                     if (novalidate || form[0].checkValidity()) {
-                        form.submit();
+                        var submits = form.find('input[type=submit]');
+                        if (submits.length === 1) {
+                            form.submit();
+                        } else {
+                            //more than one submit button, set hide popover and complete click
+                            that.inState.click = false;
+                            that.hide();
+                            //destroy confirmation (we're going to submit)
+                            that.$element.confirmation('destroy');
+                            window.setTimeout(function () {
+                                //destroy confirmation then trigger click on the specific button
+                                that.$element.trigger('click');
+                            }.bind(that), 250);
+                        }
                     }
                 }
 

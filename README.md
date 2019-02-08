@@ -58,10 +58,10 @@ In addition to the standard bootstrap popover options, you now have access to th
 | hide.bs.confirmation     | This event is fired immediately when the `hide` instance method has been called.                                          |
 | hidden.bs.confirmation   | This event is fired when the popover has finished being hidden from the user (will wait for CSS transitions to complete). |
 | inserted.bs.confirmation | This event is fired after the `show.bs.confirmation` event when the popover template has been added to the DOM.           |
-| confirm.bs.confirmation  | This event is fired when the user click confirmation button.                                                              |
-| cancel.bs.confirmation   | This event is fired when the user click cancel button.                                                                    |
+| confirmed.bs.confirmation  | This event is fired when the user click confirmation button.                                                              |
+| canceled.bs.confirmation   | This event is fired when the user click cancel button.                                                                    |
 
-    $('[data-toggle="confirmation"]').on('confirm.bs.confirmation', function () {
+    $('[data-toggle="confirmation"]').on('confirmed.bs.confirmation', function () {
         // do something…
     })
 
